@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 에뮬레이터 & 로컬 개발용 도메인만 HTTP 허용 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+    </domain-config>
+
+    <!-- (선택) 실기기에서 PC의 로컬 IP로 호출할 때, 아래 줄을 하나 더 추가
+         예: PC가 192.168.0.23 이라면 다음 줄을 추가 -->
+    <!--
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">192.168.0.23</domain>
+    </domain-config>
+    -->
+</network-security-config>
