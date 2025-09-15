@@ -5,7 +5,10 @@ data class GraphResponse(
     val nodes: List<Node>,
     val edges: List<Edge>
 ) {
-    data class Node(val id: String, val name: String)
+    data class Node(
+        val id: String,
+        val name: String?   // ← String? 로 변경 (한 줄)
+    )
     data class Edge(
         val src: String,
         val dst: String,
