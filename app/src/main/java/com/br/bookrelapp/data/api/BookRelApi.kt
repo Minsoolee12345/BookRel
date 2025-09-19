@@ -1,7 +1,12 @@
+// data/api/BookRelApi.kt
 package com.br.bookrelapp.data.api
 
 import com.br.bookrelapp.data.dto.GraphResponse
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface BookRelApi {
     @GET("api/graph/{bookId}")
@@ -21,4 +26,10 @@ interface BookRelApi {
         @Query("totalChapters") totalChapters: Int,
         @Query("window") window: Int? = null
     ): GraphResponse
+
+    @POST("ingest/url")
+    suspend fun ingestUrl(@Body request: IngestUrlRequest): GraphResponse
+
+    @POST("ingest/text")
+    suspend fun ingestText(@Body request: IngestTextRequest): GraphResponse
 }

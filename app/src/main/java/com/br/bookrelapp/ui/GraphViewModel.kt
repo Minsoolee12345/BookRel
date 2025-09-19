@@ -29,4 +29,22 @@ class GraphViewModel : ViewModel() {
                 .onFailure { _uiState.value = GraphUiState(error = it.message ?: "unknown") }
         }
     }
+
+    fun ingestUrl(bookId: Int, url: String) {
+        viewModelScope.launch {
+            _uiState.value = GraphUiState(loading = true)
+            runCatching { repo.ingestUrl(bookId, url) }
+                .onSuccess { data -> _uiState.value = GraphUiState(data = data) }
+                .onFailure { ex -> _uiState.value = GraphUiState(error = ex.message) }
+        }
+    }
+
+    fun ingestText(bookId: Int, text: String) {
+        viewModelScope.launch {
+            _uiState.value = GraphUiState(loading = true)
+            runCatching { repo.ingestText(bookId, text) }
+                .onSuccess { data -> _uiState.value = GraphUiState(data = data) }
+                .onFailure { ex -> _uiState.value = GraphUiState(error = ex.message) }
+        }
+    }
 }
