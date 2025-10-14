@@ -1,4 +1,3 @@
-// data/dto/GraphResponse.kt
 package com.br.bookrelapp.data.dto
 
 data class GraphResponse(
@@ -7,7 +6,7 @@ data class GraphResponse(
 ) {
     data class Node(
         val id: String,
-        val name: String?   // ← String? 로 변경 (한 줄)
+        val name: String?   // 서버에서 null일 수도 있으므로 그대로 유지
     )
     data class Edge(
         val src: String,
@@ -15,6 +14,7 @@ data class GraphResponse(
         val type: String,
         val weight: Double?,
         val fromChapter: Int?,
-        val toChapter: Int?
+        val toChapter: Int?,
+        val sentiment: String?    // ✅ "GOOD" | "NEUTRAL" | "BAD"
     )
 }
